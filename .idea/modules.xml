@@ -3,9 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/MES-Cloud-Platform.iml" filepath="$PROJECT_DIR$/.idea/MES-Cloud-Platform.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mqtt/mqtt.iml" filepath="$PROJECT_DIR$/mqtt/mqtt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/components/components.iml" filepath="$PROJECT_DIR$/components/components.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mqtt.main.iml" filepath="$PROJECT_DIR$/.idea/modules/mqtt.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mqtt.test.iml" filepath="$PROJECT_DIR$/.idea/modules/mqtt.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
     </modules>
   </component>
 </project>
