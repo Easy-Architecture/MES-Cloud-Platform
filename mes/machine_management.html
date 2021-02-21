@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>左侧菜单</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/main_css.css">
+    <link rel="stylesheet" href="css/order_task.css">
+    <script src="js/editTable6.js"  language="javascript"></script>
+    <style> 
+        .black_overlay{ 
+            display: none; 
+            position: absolute; 
+            top: 0%; 
+            left: 0%; 
+            width: 100%; 
+            height: 100%; 
+            background-color: black; 
+            z-index:1001; 
+            -moz-opacity: 0.8; 
+            opacity:.80; 
+            filter: alpha(opacity=88); 
+        } 
+        .white_content { 
+            display: none; 
+            position: absolute; 
+            top: 25%; 
+            left: 25%; 
+            width: 55%; 
+            height: 55%; 
+            padding: 20px; 
+            border: 10px solid rgba(196, 197, 197, 0.144); 
+            background-color: white; 
+            z-index:1002; 
+            overflow: auto; 
+            font-size: 18px;
+        } 
+    </style> 
+</head>
+
+
+<body>
+
+    <div class="top" style="height: 50px;width: 100%;background-color: #525252;z-index:11">
+        <div class="top_left">智能mes</div>
+        <a class="top_right" href="javascript:location.reload();">刷新</a>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">用户名</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="message.html">基本资料</a>
+                <a href="#about">修改密码</a>
+                <a href="#contact">退出登录</a>
+            </div>
+        </div>
+    </div>
+    <div class="leftDiv">
+        <div id="firstpaneDiv" class="menu_list">
+            <h3 class="menu_head current">系统管理</h3>
+            <div style="display:block" class="menu_nva">
+                <a href="message_notification.html">消息通知</a>
+                <a href="line_management.html">产线管理</a>
+                <a href="machine_management.html">机械管理</a>
+            </div>
+            <h3 class="menu_head">订单管理</h3>
+            <div style="display:none" class="menu_nva">
+                <a href="order_release.html">订单下达</a>
+                <a href="order_inquiry.html">订单查询</a>
+                <a href="order_tracking.html">订单追踪</a>
+                <a href="returns_management.html">退货管理</a>
+                <a href="order_task.html">订单任务</a>
+            </div>
+            <h3 class="menu_head">产线管理</h3>
+            <div style="display:none" class="menu_nva">
+                <a href="#">生产检测</a>
+                <a href="line_inspection.html">产线检测</a>
+            </div>
+        </div>
+    </div>
+    <div class="main-body">
+        <div>
+            <p>连接通讯协议
+            <button style="width: 60px;height: 25px;">opc</button>
+            <button style="width: 60px;height: 25px;">其他</button>
+            </p>
+        </div>
+
+        <div>
+            <p>配置设置<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" style="margin-left:25%;">配置说明</a>
+                <div id="light" class="white_content" ><h3 style="text-align: center;">使用说明</h3>
+                    基于plc控制编程，id为元件的唯一标识，可以世界定位到控制元件。type为元件显示的数据类型，生产线涉及到的控制元件要全部加入其中并且添加设备流程否则无法控制。
+                    <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">关闭</a></div> 
+                            <div id="fade" class="black_overlay"></div> 
+            </p>
+        </div>
+        <div>
+            <table id="editTable" width="800" style="text-align: center;">
+                <tr>
+                   <th>选择</th>
+                   <th>id</th>
+                   <th>type</th>
+                   <th></th>
+                </tr>
+                <tbody id="tbody">
+                </tbody>
+            </table>
+            <input type="button" value="新增" onclick="createRow()">
+            <input type="button" value="删除" onclick="delRow()">
+            <p>注：添加完元件节点后必须配置设备流程</p>
+        </div>
+        <div>
+            <button style="margin-left: 45%;" onclick="window.open('technological_process.html')">添加设备流程</button>
+            <button>取消</button>
+        </div>
+    </div>
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#firstpaneDiv .menu_nva:eq(0)").show();
+            $("#firstpaneDiv h3.menu_head").click(function () {
+                $(this).addClass("current").next("div.menu_nva").slideToggle(200).siblings("div.menu_nva").slideUp("slow");
+                $(this).siblings().removeClass("current");
+            });
+            $("#secondpane .menu_nva:eq(0)").show();
+            $("#secondpane h3.menu_head").mouseover(function () {
+                $(this).addClass("current").next("div.menu_nva").slideDown(400).siblings("div.menu_nva").slideUp("slow");
+                $(this).siblings().removeClass("current");
+            });
+        });
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+     
+        // 点击下拉菜单意外区域隐藏
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

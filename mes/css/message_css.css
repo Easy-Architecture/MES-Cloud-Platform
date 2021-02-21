@@ -1,0 +1,40 @@
+.main_body{
+    z-index:1;
+    height: 550px;
+    background-color: rgb(255, 251, 251);
+    margin-top: -45%;
+    margin-left: 13%;
+}
+
+.message-body p{
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10%;
+}
+
+.text-font{
+    width:120px;
+    margin-left: 32%;   
+    margin-top: -66px;
+}
+.text-input{
+    margin-top: 50px;
+    width: 200px;
+    margin-left: 43%;
+    top:-91px;
+    position: relative;
+    
+}
+.text-click{
+    margin-top: 50px;
+    width: 200px;
+    margin-left: 45%;
+    top:-91px;
+    position: relative;
+    margin-left: 20px;
+    background-color: #8b8686;
+    border-radius: 5px;
+    display:-moz-inline-box; display:inline-block; 
+    width: 80px;
+    text-align: center;
+}

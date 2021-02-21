@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>左侧菜单</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/main_css.css">
+    <link rel="stylesheet" href="css/order_task.css">
+    <script src="js/editTable6.js" language="javascript"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        a,
+        img {
+            border: 0;
+        }
+
+        body {
+            font: 12px/180% Arial, Helvetica, sans-serif, "新宋体";
+        }
+
+        .tab1 {
+            width: 600px;
+            border-top: #cccccc solid 1px;
+            border-bottom: #cccccc solid 1px;
+            margin: 50px auto 0 auto;
+        }
+
+        .menu {
+            height: 28px;
+            border-right: #cccccc solid 1px;
+        }
+
+        .menu li {
+            float: left;
+            width: 99px;
+            text-align: center;
+            line-height: 28px;
+            height: 28px;
+            cursor: pointer;
+            border-left: #cccccc solid 1px;
+            color: #666;
+            font-size: 14px;
+            overflow: hidden;
+            background: #E0E2EB;
+        }
+
+        .menu li.off {
+            background: #FFFFFF;
+            color: #336699;
+            font-weight: bold;
+        }
+
+        .menudiv {
+            overflow: scroll;
+            height: 350px;
+            border-left: #cccccc solid 1px;
+            border-right: #cccccc solid 1px;
+            border-top: 0;
+            background: #fefefe
+        }
+
+        .menudiv div {
+            padding: 15px;
+            line-height: 28px;
+        }
+
+        .black_overlay {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1001;
+            -moz-opacity: 0.8;
+            opacity: .80;
+            filter: alpha(opacity=88);
+        }
+
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 55%;
+            height: 55%;
+            padding: 20px;
+            border: 10px solid rgba(196, 197, 197, 0.144);
+            background-color: white;
+            z-index: 1002;
+            overflow: auto;
+        }
+
+        .button-yc {
+            margin-bottom: 5%;
+            float: left;
+        }
+    </style>
+    <script type="text/javascript">
+        function setTab(name, cursel) {
+            cursel_0 = cursel;
+            for (var i = 1; i <= links_len; i++) {
+                var menu = document.getElementById(name + i);
+                var menudiv = document.getElementById("con_" + name + "_" + i);
+                if (i == cursel) {
+                    menu.className = "off";
+                    menudiv.style.display = "block";
+                }
+                else {
+                    menu.className = "";
+                    menudiv.style.display = "none";
+                }
+            }
+        }
+        function Next() {
+            cursel_0++;
+            if (cursel_0 > links_len) cursel_0 = 1
+            setTab(name_0, cursel_0);
+        }
+
+        var name_0 = 'one';
+        var cursel_0 = 1;
+        var ScrollTime = 3000;//循环周期（毫秒）
+        var links_len, iIntervalId;
+        onload = function () {
+            var links = document.getElementById("tab1").getElementsByTagName('li')
+            links_len = links.length;
+            for (var i = 0; i < links_len; i++) {
+                links[i].onmouseover = function () {
+                    clearInterval(iIntervalId);
+                    this.onmouseout = function () {
+                        iIntervalId = setInterval(Next, ScrollTime);;
+                    }
+                }
+            }
+            document.getElementById("con_" + name_0 + "_" + links_len).parentNode.onmouseover = function () {
+                clearInterval(iIntervalId);
+                this.onmouseout = function () {
+                    iIntervalId = setInterval(Next, ScrollTime);;
+                }
+            }
+            setTab(name_0, cursel_0);
+            iIntervalId = setInterval(Next, ScrollTime);
+        }
+    </script>
+</head>
+
+
+<body>
+
+    <div class="top" style="height: 50px;width: 100%;background-color: #525252;z-index:11">
+        <div class="top_left">智能mes</div>
+        <a class="top_right" href="javascript:location.reload();">刷新</a>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">用户名</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="message.html">基本资料</a>
+                <a href="#about">修改密码</a>
+                <a href="#contact">退出登录</a>
+            </div>
+        </div>
+    </div>
+    <div class="leftDiv">
+        <div id="firstpaneDiv" class="menu_list">
+            <h3 class="menu_head current">系统管理</h3>
+            <div style="display:block" class="menu_nva">
+                <a href="message_notification.html">消息通知</a>
+                <a href="line_management.html">产线管理</a>
+                <a href="machine_management.html">机械管理</a>
+            </div>
+            <h3 class="menu_head">订单管理</h3>
+            <div style="display:none" class="menu_nva">
+                <a href="order_release.html">订单下达</a>
+                <a href="order_inquiry.html">订单查询</a>
+                <a href="order_tracking.html">订单追踪</a>
+                <a href="returns_management.html">退货管理</a>
+                <a href="order_task.html">订单任务</a>
+            </div>
+            <h3 class="menu_head">产线管理</h3>
+            <div style="display:none" class="menu_nva">
+                <a href="#">生产检测</a>
+                <a href="line_inspection.html">产线检测</a>
+            </div>
+        </div>
+    </div>
+    <div class="main-body">
+        <div class="tab1" id="tab1">
+            <div class="menu">
+                <ul>
+                    <li id="one1" onclick="setTab('one',1)">未联系</li>
+                    <li id="one2" onclick="setTab('one',2)">已联系</li>
+                </ul>
+            </div>
+            <div class="menudiv">
+                <div id="con_one_1">
+                    <div>
+                        <div class="maijia1" href="javascript:void(0)"
+                            onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">
+                            顾客aaa
+                        </div>
+                        <div id="light" class="white_content">订单
+                            <div>
+                                订单信息
+                            </div>
+
+                            <div><button class="button-yc" href="javascript:void(0)"
+                                    onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">联系完毕</button>
+                                <h5 style="margin-left: 55%;">输入商讨后的价格：</h5><input type="text"
+                                    style="float:right;margin-top: -23px;">
+                            </div>
+                        </div>
+                        <div id="fade" class="black_overlay"></div>
+                    </div>
+                    <div>
+                        <div class="maijia1" href="javascript:void(0)"
+                            onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">
+                            顾客bbb
+                        </div>
+                        <div id="light" class="white_content">订单
+                            <div>
+                                订单信息
+                            </div>
+
+                            <div><button class="button-yc" href="javascript:void(0)"
+                                    onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">联系完毕</button>
+                                <h5 style="margin-left: 55%;">输入商讨后的价格：</h5><input type="text"
+                                    style="float:right;margin-top: -23px;">
+                            </div>
+                        </div>
+                        <div id="fade" class="black_overlay"></div>
+                    </div>
+                    <div>
+                        <div class="maijia1" href="javascript:void(0)"
+                            onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">
+                            顾客ccc
+                        </div>
+                        <div id="light" class="white_content">订单
+                            <div>
+                                订单信息
+                            </div>
+
+                            <div><button class="button-yc" href="javascript:void(0)"
+                                    onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">联系完毕</button>
+                                <h5 style="margin-left: 55%;">输入商讨后的价格：</h5><input type="text"
+                                    style="float:right;margin-top: -23px;">
+                            </div>
+                        </div>
+                        <div id="fade" class="black_overlay"></div>
+                    </div>
+                    <div>
+                        <div class="maijia1" href="javascript:void(0)"
+                            onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">
+                            顾客ddd
+                        </div>
+                        <div id="light" class="white_content">订单
+                            <div>
+                                订单信息
+                            </div>
+
+                            <div><button class="button-yc" href="javascript:void(0)"
+                                    onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">联系完毕</button>
+                                <h5 style="margin-left: 55%;">输入商讨后的价格：</h5><input type="text"
+                                    style="float:right;margin-top: -23px;">
+                            </div>
+                        </div>
+                        <div id="fade" class="black_overlay"></div>
+                    </div>
+                </div>
+                <div id="con_one_2" style="display:none;">
+                    <div>
+                        <div class="maijia1" href="javascript:void(0)"
+                            onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">
+                            顾客aaa11
+                        </div>
+                        <div id="light" class="white_content">订单
+                            <div>
+                                订单信息
+                            </div>
+
+                            <div><button class="button-yc" href="javascript:void(0)"
+                                    onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">联系完毕</button>
+                                <h5 style="margin-left: 55%;">输入商讨后的价格：</h5><input type="text"
+                                    style="float:right;margin-top: -23px;">
+                            </div>
+                        </div>
+                        <div id="fade" class="black_overlay"></div>
+                    </div>
+                    <div>
+                        <div class="maijia1" href="javascript:void(0)"
+                            onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">
+                            顾客bbb11
+                        </div>
+                        <div id="light" class="white_content">订单
+                            <div>
+                                订单信息
+                            </div>
+
+                            <div><button class="button-yc" href="javascript:void(0)"
+                                    onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">联系完毕</button>
+                                <h5 style="margin-left: 55%;">输入商讨后的价格：</h5><input type="text"
+                                    style="float:right;margin-top: -23px;">
+                            </div>
+                        </div>
+                        <div id="fade" class="black_overlay"></div>
+                    </div>
+                    <div>
+                        <div class="maijia1" href="javascript:void(0)"
+                            onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">
+                            顾客ccc11
+                        </div>
+                        <div id="light" class="white_content">订单
+                            <div>
+                                订单信息
+                            </div>
+
+                            <div><button class="button-yc" href="javascript:void(0)"
+                                    onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">联系完毕</button>
+                                <h5 style="margin-left: 55%;">输入商讨后的价格：</h5><input type="text"
+                                    style="float:right;margin-top: -23px;">
+                            </div>
+                        </div>
+                        <div id="fade" class="black_overlay"></div>
+                    </div>
+                    <div>
+                        <div class="maijia1" href="javascript:void(0)"
+                            onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">
+                            顾客ddd11
+                        </div>
+                        <div id="light" class="white_content">订单
+                            <div>
+                                订单信息
+                            </div>
+
+                            <div><button class="button-yc" href="javascript:void(0)"
+                                    onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">联系完毕</button>
+                                <h5 style="margin-left: 55%;">输入商讨后的价格：</h5><input type="text"
+                                    style="float:right;margin-top: -23px;">
+                            </div>
+                        </div>
+                        <div id="fade" class="black_overlay"></div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:center;clear:both;"></div>
+
+        </div>
+
+        <script>
+
+            function aaa() {
+
+            }
+
+            $(document).ready(function () {
+                $("#firstpaneDiv .menu_nva:eq(0)").show();
+                $("#firstpaneDiv h3.menu_head").click(function () {
+                    $(this).addClass("current").next("div.menu_nva").slideToggle(200).siblings("div.menu_nva").slideUp("slow");
+                    $(this).siblings().removeClass("current");
+                });
+                $("#secondpane .menu_nva:eq(0)").show();
+                $("#secondpane h3.menu_head").mouseover(function () {
+                    $(this).addClass("current").next("div.menu_nva").slideDown(400).siblings("div.menu_nva").slideUp("slow");
+                    $(this).siblings().removeClass("current");
+                });
+            });
+            function myFunction() {
+                document.getElementById("myDropdown").classList.toggle("show");
+            }
+
+            // 点击下拉菜单意外区域隐藏
+            window.onclick = function (event) {
+                if (!event.target.matches('.dropbtn')) {
+
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            }
+        </script>
+</body>
+
+</html>

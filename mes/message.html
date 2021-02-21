@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>左侧菜单</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/main_css.css">
+    <link rel="stylesheet" href="css/message_css.css">
+</head>
+
+
+
+<body>
+
+    <div class="top" style="height: 50px;width: 100%;background-color: #525252;z-index:11">
+        <div class="top_left">智能mes</div>
+        <a class="top_right" href="javascript:location.reload();">刷新</a>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">用户名</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="message.html">基本资料</a>
+                <a href="#about">修改密码</a>
+                <a href="#contact">退出登录</a>
+            </div>
+        </div>
+    </div>
+    <div class="leftDiv">
+        <div id="firstpaneDiv" class="menu_list">
+            <h3 class="menu_head current">系统管理</h3>
+            <div style="display:block" class="menu_nva">
+                <a href="message_notification.html">消息通知</a>
+                <a href="line_management.html">产线管理</a>
+                <a href="machine_management.html">机械管理</a>
+            </div>
+            <h3 class="menu_head">订单管理</h3>
+            <div style="display:none" class="menu_nva">
+                <a href="order_release.html">订单下达</a>
+                <a href="order_inquiry.html">订单查询</a>
+                <a href="order_tracking.html">订单追踪</a>
+                <a href="returns_management.html">退货管理</a>
+                <a href="order_task.html">订单任务</a>
+            </div>
+            <h3 class="menu_head">产线管理</h3>
+            <div style="display:none" class="menu_nva">
+                <a href="#">生产检测</a>
+                <a href="line_inspection.html">产线检测</a>
+            </div>
+        </div>
+    </div>
+    <div class="main_body">
+        <div class="message-body">
+            <p>基本信息</p>
+            <h4 class="text-font">企业法人</h1>
+                <input type="text" name="enterpriseLegalPerson" class="text-input">
+                <h4 class="text-font">客服电话</h1>
+                    <input type="text" name="serviceTelephone" class="text-input">
+                    <h4 class="text-font">企业邮箱</h1>
+                        <input type="text" name="enterpriseMailbox" class="text-input">
+                        <h4 class="text-font">企业邮箱</h1>
+                            <input type="text" name="enterpriseMailbox" class="text-input">
+                            <h4 class="text-font">仓库地址</h1>
+                                <input type="text" name="address" class="text-input">
+                                <h4 class="text-font">真实姓名</h1>
+                                    <input type="text" name="turename" class="text-input">
+                                    <h4 class="text-font">联系方式</h1>
+                                        <input type="text" name="personTelephone" class="text-input">
+                                        <h4 class="text-font">上传营业执照片</h1>
+                                            <input class="text-input" type="file" id="upload_file_id" />
+                                            <span class="text-click"
+                                                onmouseover="this.style.background='#F5CCDC'"
+                                                onmouseout="this.style.background=''"
+                                                onclick="uploadFileToServer()">确定</span>
+
+                                                <h4 class="text-font">上传流水线照片</h1>
+                                                    <input class="text-input" type="file" id="upload_file_id" />
+                                                    <span class="text-click"
+                                                        onmouseover="this.style.background='#F5CCDC'"
+                                                        onmouseout="this.style.background=''"
+                                                        onclick="uploadFileToServer()">确定</span>
+
+        </div>
+    </div>
+    <!-- html  end-->
+
+    <!-- script  代码-->
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#firstpaneDiv .menu_nva:eq(0)").show();
+            $("#firstpaneDiv h3.menu_head").click(function () {
+                $(this).addClass("current").next("div.menu_nva").slideToggle(200).siblings("div.menu_nva").slideUp("slow");
+                $(this).siblings().removeClass("current");
+            });
+            $("#secondpane .menu_nva:eq(0)").show();
+            $("#secondpane h3.menu_head").mouseover(function () {
+                $(this).addClass("current").next("div.menu_nva").slideDown(400).siblings("div.menu_nva").slideUp("slow");
+                $(this).siblings().removeClass("current");
+            });
+        });
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // 点击下拉菜单意外区域隐藏
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        /*上传*/
+        function createHttpRequest() {
+            var xmlHttp = null;
+            try {
+                // Firefox, Opera 8.0+, Safari
+                xmlHttp = new XMLHttpRequest();
+            } catch (e) {
+                // Internet Explorer
+                try {
+                    xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    try {
+                        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) {
+                        alert("您的浏览器不支持AJAX！");
+                    }
+                }
+            }
+            return xmlHttp;
+        }
+
+        function uploadFileToServer() {
+            var uploadFile = document.getElementById("upload_file_id");
+            var uploadTip = document.getElementById("upload_tip_id");
+            var uploadProgress = document.getElementById("upload_progress_id");
+
+            if (uploadFile.value == "") {
+                uploadTip.innerText = "请选择一个文件";
+            } else if (uploadFile.files[0].size > 1024 && uploadFile.files[0].size < (40 * 1024 * 1024)) {
+                try {
+                    if (window.FileReader) {
+                        var fReader = new FileReader();
+                        var xhreq = createHttpRequest();
+                        xhreq.onreadystatechange = function () {
+                            if (xhreq.readyState == 4) {
+                                if (xhreq.status == 200) {
+                                    uploadTip.innerText = "文件上传成功";
+                                    setTimeout(function () {
+                                        hideUploadDialog()
+                                    }, 2000);	//2秒后隐藏
+                                } else {
+                                    uploadTip.innerText = "文件上传失败了";
+                                }
+                            }
+                        }
+                        fReader.onload = function (e) {
+                            xhreq.open("POST", "/upload/file", true);
+                            xhreq.setRequestHeader("Content-type", "application/octet-stream"); //流类型
+                            xhreq.setRequestHeader("Content-length", fwFile.files[0].size);     //文件大小
+                            xhreq.setRequestHeader("uploadfile_name", encodeURI(fwFile.files[0].name)); //兼容中文
+                            xhreq.send(fReader.result);
+                        }
+                        fReader.onprogress = function (e) {
+                            uploadProgress.value = e.loaded * 100 / e.total;
+                        }
+                        fReader.readAsArrayBuffer(uploadFile.files[0]);
+                        uploadProgress.style.visibility = "visible";
+                        uploadProgress.value = 0;
+                    } else {
+                        uploadTip.innerText = "浏览器不支持上传文件";
+                    }
+                } catch (e) {
+                    uploadTip.innerText = "文件上传失败";
+                }
+            } else {
+                uploadTip.innerText = "文件不符合要求";
+            }
+        }
+        function showUploadDialog() {
+            var up_dialog = document.getElementById("upload_dialog");
+            document.getElementById("upload_tip_id").innerText = "请选择要上传的文件";
+            document.getElementById("upload_progress_id").style.visibility = "hidden";
+            up_dialog.style.visibility = "visible";
+
+        }
+        function hideUploadDialog() {
+            var up_dialog = document.getElementById("upload_dialog");
+            document.getElementById("upload_progress_id").style.visibility = "hidden";
+            up_dialog.style.visibility = "hidden";
+        }
+    </script>
+</body>
+
+</html>

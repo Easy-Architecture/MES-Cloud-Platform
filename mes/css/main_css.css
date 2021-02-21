@@ -1,0 +1,137 @@
+.menu_list {
+    width: 268px;
+    margin: 0;
+}
+
+.menu_head {
+    height: 47px;
+    width:120px;
+    line-height: 47px;
+    padding-left: 38px;
+    font-size: 14px;
+    color: #9E9E9E;
+    cursor: pointer;
+    border: 1px solid #f1f1f1;
+    position: relative;
+    margin: 0px;
+    font-weight: bold;
+    background: #525252;
+}
+
+.menu_list .current {
+    background:  #525252;
+    width:120px;
+}
+
+.menu_nva {
+    line-height: 38px;
+}
+
+.menu_nva a {
+    display: block;
+    height: 38px;
+    width:120px;
+    line-height: 38px;
+    padding-left: 38px;
+    color: #777777;
+    background: #695f5f;
+    text-decoration: none;
+    border-bottom: 1px solid  #525252;
+}
+
+.menu_nva a:hover {
+    text-decoration: none;
+}
+
+.top_left{
+    width: 150px;
+    float: left;
+    font-size: 20px;
+    color: #f1f1f1;
+    line-height: 50px;
+    text-align: center;
+}
+
+.dropbtn {
+    background-color: #a6a8a6;
+    color: white;
+    padding: 16px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #5a5553;
+}
+
+.dropdown {
+    float: right;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+
+.top_right{
+    float: right;
+    height: 48.5px;
+    width: 70px;
+    background-color: #a6a8a6;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    border: 1px solid #f1f1f1;
+}
+.leftDiv{
+    width: 160px;
+    height:550px;
+    background:  #525252;
+}
+.main_body{
+    z-index:1;
+    height: 550px;
+    background-color: rgb(56, 57, 59);
+    margin-top: -52.7%;
+    margin-left: 13%;
+}
+.hint{
+    background-color: rgb(83, 56, 62);
+    margin-top: 10%;
+    width: 300px;
+    margin-left: 70%;
+}
+.design{
+    width: 300px;      
+    height: 300px;      
+    background-color:rgb(82, 73, 73);     
+    border-radius: 50%;      
+    -moz-border-radius: 50%;      
+    -webkit-border-radius: 50%;
+    line-height: 300px;
+    text-align: center;
+    font-size: 100px;
+    color: rgb(136, 122, 122);
+    margin-left: 30%;
+    margin-top: 10%;
+}
