@@ -1,0 +1,36 @@
+#服务开放端口
+server:
+  port: 9999
+
+spring:
+  #服务名
+  application:
+    name: mes-gateway
+  #nacos
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    #开启服务发现
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        #整合登录模块
+        - id: mes-login
+          uri: lb://mes-login
+          predicates:
+            - Path=/login/**
+
+        #整合接受文件模块
+        - id: mes-login
+          uri: lb://files-receive
+          predicates:
+            - Path=/coFilesReceive/FR
+
+        #整合XXX注册模块
+        - id: mes-coregister
+          uri: lb://mes-coregister
+          predicates:
+            - Path=/coregister10001/**

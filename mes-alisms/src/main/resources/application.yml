@@ -1,0 +1,11 @@
+server:
+  port:
+
+spring:
+  application:
+    name: mes-alisms
+  #json时间格式
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
