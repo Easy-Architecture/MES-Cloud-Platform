@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>左侧菜单</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/main_css.css">
+    <link rel="stylesheet" href="css/order_task.css">
+    <link rel="stylesheet" href="css/process.css">
+    <script src="js/process.js"  language="javascript"></script>
+</head>
+
+
+<body>
+    <div class="top" style="height: 50px;width: 100%;background-color: #525252;z-index:11">
+        <div class="top_left">智能mes</div>
+        <a class="top_right" href="javascript:location.reload();">刷新</a>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">用户名</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="message.html">基本资料</a>
+                <a href="#about">修改密码</a>
+                <a href="#contact">退出登录</a>
+            </div>
+        </div>
+    </div>
+    <div class="leftDiv">
+        <div id="firstpaneDiv" class="menu_list">
+            <h3 class="menu_head current">系统管理</h3>
+            <div style="display:block" class="menu_nva">
+                <a href="message_notification.html">消息通知</a>
+                <a href="line_management.html">产线管理</a>
+                <a href="machine_management.html">机械管理</a>
+            </div>
+            <h3 class="menu_head">订单管理</h3>
+            <div style="display:none" class="menu_nva">
+                <a href="order_release.html">订单下达</a>
+                <a href="order_inquiry.html">订单查询</a>
+                <a href="order_tracking.html">订单追踪</a>
+                <a href="returns_management.html">退货管理</a>
+                <a href="order_task.html">订单任务</a>
+            </div>
+            <h3 class="menu_head">产线管理</h3>
+            <div style="display:none" class="menu_nva">
+                <a href="#">生产检测</a>
+                <a href="line_inspection.html">产线检测</a>
+            </div>
+        </div>
+    </div>
+    <div class="main-body">
+        <div class="body-left">
+            <p>选择id</p>
+            <button onclick = "document.getElementById('but123').style.display='block';document.getElementById('fade')">123</button>
+            <button onclick = "document.getElementById('but123').style.display='block';document.getElementById('fade');document.getElementById('idnum').innerHTML = 'id:213';document.getElementById('type').innerHTML = 'type:word'">231</button>
+            <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" style="font-size: 10px;">添加流程设置说明</a>
+            <div id="light" class="white_content" ><h3 style="text-align: center; ">使用说明</h3>
+                填写元件的能取到的值的范围并填写调用函数，此函数为plc内部写好的函数否则调用无效，元件至少有一个状态值且每个元件的状态值要大于或等于它的操作函数，否则添加失败。注：这直接关系到控制是否正常。请核实后谨慎添加。
+                <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">关闭</a></div> 
+            <div id="fade" class="black_overlay"></div>
+        </div>
+        <div class="body-center" id="but123" style="display: none;">
+            <p id="idnum">id:123</p>
+            <p id="type">type:bool</p>
+            <table id="editTable" width="600" style="text-align: center;">
+                <tr>
+                    <th>选择</th>
+                   <th>值</th>
+                   <th>操作</th>
+                   
+                </tr>
+                <tbody id="tbody">
+        
+                </tbody>
+            </table>
+            <input type="button" value="添加" onclick="createRow()">
+            <input type="button" value="删除" onclick="delRow()">
+        </div>
+        <div class="body-bot">
+            <button onclick = "document.getElementById('but123').style.display='none';document.getElementById('fade').style.display='none'">完成</button>
+            <button onclick="window.open('machine_management.html')">取消</button>
+            <button onclick="window.open('flow_chart.html')">编辑流程图</button>
+        </div>
+    </div>
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#firstpaneDiv .menu_nva:eq(0)").show();
+            $("#firstpaneDiv h3.menu_head").click(function () {
+                $(this).addClass("current").next("div.menu_nva").slideToggle(200).siblings("div.menu_nva").slideUp("slow");
+                $(this).siblings().removeClass("current");
+            });
+            $("#secondpane .menu_nva:eq(0)").show();
+            $("#secondpane h3.menu_head").mouseover(function () {
+                $(this).addClass("current").next("div.menu_nva").slideDown(400).siblings("div.menu_nva").slideUp("slow");
+                $(this).siblings().removeClass("current");
+            });
+        });
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // 点击下拉菜单意外区域隐藏
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

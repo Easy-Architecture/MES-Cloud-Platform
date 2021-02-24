@@ -1,0 +1,8 @@
+table tr td{border:1px solid #eee;text-align:center;width:80px;}
+#divInsert{width:100%;height:25px;}
+#btnInsert{width:50px;height:25px;background-color:#eee;border-style:none;position:absolute;left:185px;}
+#btnData{width:50px;height:25px;background-color:#eee;border-style:none;position:absolute;left:235px;}
+#btnDelete{width:50px;height:25px;background-color:#eee;border-style:none;position:absolute;left:285px;}
+input{width:70px;}
+.txt{width:35px;float:left;position:relative;left:5px;}
+.ck{width:10px;float:right;}
