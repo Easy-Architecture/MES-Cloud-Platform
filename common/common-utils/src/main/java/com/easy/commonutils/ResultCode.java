@@ -10,6 +10,6 @@ package com.easy.commonutils;
  */
 
 public interface ResultCode {
-    public static Integer SUCCESS=20000;
-    public static Integer ERROR=44444;
+    Integer SUCCESS=20000;
+    Integer ERROR=44444;
 }

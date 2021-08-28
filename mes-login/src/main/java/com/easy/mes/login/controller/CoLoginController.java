@@ -4,11 +4,13 @@ package com.easy.mes.login.controller;
 import com.easy.commonutils.JwtConfig;
 import com.easy.commonutils.commonResult;
 import com.easy.mes.login.entity.CoLogin;
+import com.easy.mes.login.entity.CustomerLogin;
 import com.easy.mes.login.service.CoLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * <p>
@@ -42,6 +44,12 @@ public class CoLoginController {
         String idByJwtToken = JwtConfig.getIdByJwtToken(request);
         CoLogin byId = coLoginService.getById(idByJwtToken);
         return commonResult.OK().data("result",byId);
+    }
+
+    //根据用户id获取用户信息(远程调用方法)
+    @GetMapping("/getCoNameById/{id}")
+    public String getCoNameById(@PathVariable("id") Long id){
+        return coLoginService.getCoNameById(id);
     }
 }
 

@@ -1,5 +1,6 @@
 package com.easy.mes.coregister10001;
 
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableDiscoveryClient  //开启nacos
 @EnableFeignClients  //开启服务调用
+@EnableRabbit//开启RabbitMQ
 @ComponentScan(basePackages = {"com.easy"})
 public class Coregister10001ApplicationMain {
     public static void main(String[] args) {

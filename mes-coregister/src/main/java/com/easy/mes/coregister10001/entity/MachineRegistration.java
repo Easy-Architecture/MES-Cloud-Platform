@@ -38,6 +38,8 @@ public class MachineRegistration implements Serializable {
 
     private String mrName;
 
+    private String mrIp;
+
     @TableField(fill = FieldFill.INSERT)
     private Date gmtCreate;
     @TableField(fill = FieldFill.INSERT_UPDATE)

@@ -20,4 +20,6 @@ public interface CustomerLoginService extends IService<CustomerLogin> {
     void curegister(CustomerLogin customerLogin);
 
     List<CustomerLogin> getCuInfoById(Long id);
+
+    Integer numUserRegister(String day);
 }

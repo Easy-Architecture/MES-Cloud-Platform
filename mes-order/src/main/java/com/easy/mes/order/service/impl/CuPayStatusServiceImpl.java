@@ -69,7 +69,6 @@ public class CuPayStatusServiceImpl extends ServiceImpl<CuPayStatusMapper, CuPay
         QueryWrapper<CuOrder> wrapper = new QueryWrapper<>();
         wrapper.eq("order_id",orderId);
         CuOrder cuOrder = cuOrderService.getOne(wrapper);
-
         //添加支付状态表记录
         CuPayStatus c= new CuPayStatus();
         c.setOrderId(cuOrder.getOrderId());

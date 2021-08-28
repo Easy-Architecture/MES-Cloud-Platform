@@ -27,6 +27,9 @@
         <module>mes-login</module>
         <module>mes-gateway</module>
         <module>mes-order</module>
+        <module>mes-statistics</module>
+        <module>mes-banner</module>
+        <module>RabbitMQ</module>
     </modules>
 
     <properties>
@@ -34,7 +37,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <druid.verison>1.1.16</druid.verison>
-        <mysql.version>8.0.23</mysql.version>
+        <mysql.version>8.0.25</mysql.version>
         <lombok.version>1.16.18</lombok.version>
         <junit.version>4.12</junit.version>
         <log4j.version>1.2.17</log4j.version>
@@ -42,7 +45,7 @@
         <mybatis-plus.version>3.3.0</mybatis-plus.version>
         <velocity.version>2.1</velocity.version>
         <mybatis-plus-generator.version>3.3.0</mybatis-plus-generator.version>
-        <swagger.version>2.7.0</swagger.version>
+        <swagger.version>2.6.1</swagger.version>
         <jwt.version>0.8.0</jwt.version>
     </properties>
 

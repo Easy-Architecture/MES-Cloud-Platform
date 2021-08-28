@@ -9,10 +9,11 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @author LiZiHan
  * @since 2021-02-18
  */
-//@SpringBootApplication
-//@EnableDiscoveryClient
-//public class GatewayApplicationMain {
-//    public static void main(String[] args) {
-//        SpringApplication.run(GatewayApplicationMain.class,args);
-//    }
-//}
+
+@SpringBootApplication
+@EnableDiscoveryClient
+public class GatewayApplicationMain {
+    public static void main(String[] args) {
+        SpringApplication.run(GatewayApplicationMain.class,args);
+    }
+}

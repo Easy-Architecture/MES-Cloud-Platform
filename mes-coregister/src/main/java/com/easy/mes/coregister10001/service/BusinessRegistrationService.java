@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-02-10
  */
 public interface BusinessRegistrationService extends IService<BusinessRegistration> {
-
+    Long getCoIdByCoName(String coNameByCoId);
 }

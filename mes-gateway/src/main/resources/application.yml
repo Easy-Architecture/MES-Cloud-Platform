@@ -34,3 +34,15 @@ spring:
           uri: lb://mes-coregister
           predicates:
             - Path=/coregister10001/**
+
+        #整合banner模块
+        - id: mes-banner
+          uri: lb://mes-banner
+          predicates:
+            - Path=/mesBanner/**
+
+        #整合订单模块
+        - id: mes-order
+          uri: lb://mes-order
+          predicates:
+            - Path=/order/**

@@ -1,12 +1,12 @@
 package com.easy.mes.login.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.easy.commonutils.JwtConfig;
 import com.easy.commonutils.exceptionhandler.MyException;
 import com.easy.mes.login.entity.CoLogin;
 import com.easy.mes.login.mapper.CoLoginMapper;
 import com.easy.mes.login.service.CoLoginService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -68,5 +68,13 @@ public class CoLoginServiceImpl extends ServiceImpl<CoLoginMapper, CoLogin> impl
         c.setMobile(mobile);
         c.setPassWord(passWord);
         baseMapper.insert(c);
+    }
+
+    @Override
+    public String getCoNameById(Long id) {
+        QueryWrapper<CoLogin> wrapper = new QueryWrapper<>();
+        wrapper.eq("id",id);
+        CoLogin coLogin = baseMapper.selectOne(wrapper);
+        return coLogin.getCoName();
     }
 }

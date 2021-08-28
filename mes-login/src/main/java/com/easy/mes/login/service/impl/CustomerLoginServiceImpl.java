@@ -78,4 +78,10 @@ public class CustomerLoginServiceImpl extends ServiceImpl<CustomerLoginMapper, C
     public List<CustomerLogin> getCuInfoById(Long id) {
         return this.list(new QueryWrapper<CustomerLogin>().eq("id",id));
     }
+
+    //返回当天注册人数
+    @Override
+    public Integer numUserRegister(String day) {
+        return baseMapper.numUserRegister(day);
+    }
 }

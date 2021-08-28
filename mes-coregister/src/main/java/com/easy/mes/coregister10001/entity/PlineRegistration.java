@@ -38,6 +38,8 @@ public class PlineRegistration implements Serializable {
 
     private String plName;
 
+    private Integer plStatus;
+
     @TableField(fill = FieldFill.INSERT)
     private Date gmtCreate;
     @TableField(fill = FieldFill.INSERT_UPDATE)

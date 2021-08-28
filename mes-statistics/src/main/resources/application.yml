@@ -1,12 +1,12 @@
 #开放端口
 server:
-  port: 10001
+  port: 10005
 
 spring:
   #服务名字，整合用
   application:
-    name: mes-coregister
-  #环境
+    name: mes-statistics
+  #环境dev/test/prod
   profiles:
     active: dev
   #mysql数据库
@@ -26,11 +26,9 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
 
-#打印mybatis日志
 mybatis-plus:
+  #打印mybatis日志
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  #配置数据库xml文件路径
-  mapper-locations: com/easy/mes/coregister10001/mapper/*.xml
-
-
+    #配置数据库xml文件路径
+  mapper-locations: classpath:com/easy/mes/statistics/mapper/xml/*.xml

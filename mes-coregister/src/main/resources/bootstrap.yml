@@ -1,0 +1,58 @@
+#开放端口
+server:
+  port: 10001
+
+spring:
+  #服务名字，整合用
+  application:
+    name: mes-coregister
+  #环境
+  profiles:
+    active: dev
+  #mysql数据库
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/coregister?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: '!Mouth990127'
+  #json时间格式
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  #nacos
+  cloud:
+    nacos:
+#      config:
+#        server-addr: 183.200.199.89:8848
+#        file-extension: yml
+#        config-long-poll-timeout: 6000000
+      discovery:
+#        server-addr: 183.200.199.89:8848
+        server-addr: 127.0.0.1:8848
+  #引入rabbitmq
+  rabbitmq:
+    host: 10.10.67.69
+    port: 5672
+    virtual-host: /
+    #消息抵达Broker确认
+    publisher-confirm-type: correlated
+    #消息抵达Queue确认
+    publisher-returns: true
+    #消息抵达队列，以异步形式发送优先回调returnconfirm
+    template:
+      mandatory: true
+    #手动确认ack，防止宕机等导致丢失消息
+#    listener:
+#      simple:
+#        acknowledge-mode: manual
+
+
+#打印mybatis日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #配置数据库xml文件路径
+  mapper-locations: com/easy/mes/coregister10001/mapper/*.xml
+
+

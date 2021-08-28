@@ -42,7 +42,6 @@ public class CustomerLoginController {
     //根据token获取用户信息
     @GetMapping("getcuInfo")
     public commonResult getcuInfo(HttpServletRequest request){
-//        String id= JwtConfig.getIdByJwtToken(request);
         String id = JwtConfig.getIdByJwtToken(request);
         CustomerLogin byId = customerLoginService.getById(id);
         return commonResult.OK().data("result",byId);
@@ -54,5 +53,11 @@ public class CustomerLoginController {
         return customerLoginService.getCuInfoById(id);
     }
 
+    //远程查询当天注册用户数
+    @GetMapping("numUserRegister/{day}")
+    public commonResult numUserRegister(@PathVariable("day") String day){
+        Integer num = customerLoginService.numUserRegister(day);
+        return commonResult.OK().data("result",num);
+    }
 }
 

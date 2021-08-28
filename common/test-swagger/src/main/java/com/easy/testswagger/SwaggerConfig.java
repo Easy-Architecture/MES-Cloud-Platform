@@ -1,15 +1,5 @@
 package com.easy.testswagger;
 
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//import springfox.documentation.builders.ApiInfoBuilder;
-//import springfox.documentation.builders.PathSelectors;
-//import springfox.documentation.service.ApiInfo;
-//import springfox.documentation.service.Contact;
-//import springfox.documentation.spi.DocumentationType;
-//import springfox.documentation.spring.web.plugins.Docket;
-//import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
 import com.google.common.collect.Lists;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,30 +27,9 @@ import java.util.List;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-    //旧版
-//    @Bean
-//    public Docket docket() {
-//        return new Docket(DocumentationType.SWAGGER_2)
-//                .groupName("Api")
-//                .apiInfo(apiInfo())
-//                .select()
-//                .paths(PathSelectors.any())
-//                .build();
-//    }
-//
-//    public ApiInfo apiInfo() {
-//        return new ApiInfoBuilder()
-//                .title("swagger2构建的API文档")
-//                .description("restful风格接口")
-//                .contact(new Contact("java","","644988382@qq.com"))
-//                .version("1.0")
-//                .build();
-//    }
 
     //新版
     public static final String AUTHORIZATION_HEADER = "Access-Token";
-    public static final String DEFAULT_INCLUDE_PATTERN = "/api/.*";
-
 
     /**
      * TODO
@@ -82,16 +51,11 @@ public class SwaggerConfig {
         pars.add(ticketPar.build());    //根据每个方法名也知道当前方法在设置什么参数
 
         return new Docket(DocumentationType.SWAGGER_2)
-                //.groupName("group")
-//                .enable(swaggerEnabled)
                 .apiInfo(apiInfo()).select()
-                // 对所有该包下的Api进行监控，如果想要监控所有的话可以改成any()
-                //.apis(RequestHandlerSelectors.basePackage("com.iscas"))
                 .apis(RequestHandlerSelectors.any())
                 // 对所有路径进行扫描
                 .paths(PathSelectors.any())
                 .build()
-                //.globalOperationParameters(pars);
                 .securityContexts(Lists.newArrayList(securityContext()))
                 .securitySchemes(Lists.newArrayList(apiKey()));
     }
@@ -103,7 +67,6 @@ public class SwaggerConfig {
     private SecurityContext securityContext() {
         return SecurityContext.builder()
                 .securityReferences(defaultAuth())
-                //.forPaths(PathSelectors.regex(DEFAULT_INCLUDE_PATTERN))
                 .forPaths(PathSelectors.regex("^(?!auth).*$"))
                 .build();
     }
@@ -122,12 +85,10 @@ public class SwaggerConfig {
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("XXXX系统")
-                .description("描述")
-                //.termsOfServiceUrl("http://gaohanghang.github.io")
+                .title("mes")
+//                .description("")
                 .license("Apache 2.0")
                 .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0")
                 .version("2.0.0").build();
     }
-
 }

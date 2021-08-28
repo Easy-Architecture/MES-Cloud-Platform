@@ -3,6 +3,8 @@ package com.easy.mes.login.service;
 import com.easy.mes.login.entity.CoLogin;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -17,4 +19,5 @@ public interface CoLoginService extends IService<CoLogin> {
 
     void register(CoLogin coLogin);
 
+    String getCoNameById(Long id);
 }
